@@ -21,6 +21,7 @@ export default {
       tableHead: ['LINK ORIGINAL', 'LINK CURTO', 'IDENTIFICADOR'],
 
       totalClicks: null,
+      linkInfo: null,
     }
   },
 
@@ -62,16 +63,36 @@ export default {
         },
       })
         .then((response) => {
-        // Processar a resposta e atualizar os dados necessários
+          // Processar a resposta e atualizar os dados necessários
           this.registers = response.data
 
           // Retornar o total de links
           this.totalLinks = response.total
           // Atualizar o total de cliques
           this.totalClicks = this.registers.reduce((total, data) => total + data.quantity, 0)
+
+          const linkId = this.$route.params.id
+          if (linkId)
+            this.fetchLinkInfo(linkId)
         })
         .catch((error) => {
           console.error('Erro ao carregar os links:', error)
+        })
+    },
+
+    fetchLinkInfo(linkId) {
+      const endpoint = `links/${linkId}`
+      $fetch(endpoint, {
+        baseURL: `${this.$config.public.baseURL}`,
+        headers: {
+          Authorization: `Bearer ${this.token}`,
+        },
+      })
+        .then((response) => {
+          this.linkInfo = response.data // Armazena as informações do link no data
+        })
+        .catch((error) => {
+          console.error('Erro ao carregar as informações do link:', error)
         })
     },
 
@@ -124,8 +145,8 @@ export default {
 </script>
 
 <template>
-  <!-- <TitlePage :title="titlePage" @clickSubmit="search()" />
-  <ButtonAdd @add="(dialog = true), reset()" /> -->
+  <TitlePage :title="titlePage" @clickSubmit="search()" />
+  <ButtonAdd @add="(dialog = true), reset()" />
   <div class="flex flex-wrap justify-center p-3">
     <div class="w-full max-w-[1000px] p-2 flex flex-nowrap justify-between">
       <div class="flex text-xs">
