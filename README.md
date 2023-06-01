@@ -8,7 +8,7 @@ git clone https://github.com/lcmacedo07/clinica-frontend.git
 ```
 
 ```sh
-cd clinica-backend/
+cd clinica-frontend/
 ```
 
 Crie o Arquivo .env
