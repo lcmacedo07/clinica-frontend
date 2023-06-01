@@ -11,68 +11,28 @@ git clone https://github.com/lcmacedo07/clinica-frontend.git
 cd clinica-frontend/
 ```
 
-Crie o Arquivo .env
-```sh
-cd clinica-backend/
-cp .env.example .env
-```
-
 Acesse o VS Code
 ```sh
 code .
 ```
+Crie o Arquivo .env
+```sh
+crie o Arquivo .env
+```
 
 Atualize as variáveis de ambiente do arquivo .env
-```dosini
-APP_NAME=clinica-backend
-APP_URL=http://localhost:8955
-
-DB_CONNECTION=mysql
-DB_HOST=mysql
-DB_PORT=3306
-DB_DATABASE=clinica-backend
-DB_USERNAME=root
-DB_PASSWORD=root
-
-CACHE_DRIVER=redis
-QUEUE_CONNECTION=redis
-SESSION_DRIVER=redis
-
-REDIS_HOST=redis
-REDIS_PASSWORD=null
-REDIS_PORT=6379
-```
-
-Suba os containers do projeto
-```sh
-docker-compose up -d
-```
-
-Acessar o container
-```sh
-docker-compose exec app bash
+BASE_URL = http://localhost:8955/api/v1
 ```
 
 Instalar as dependências do projeto
 ```sh
-composer install
+yarn install
 ```
 
-Gerar a key do projeto Laravel
+Rode o projeto
 ```sh
-php artisan key:generate
-```
-
-Rode as Migrations
-```sh
-php artisan migrate
-```
-
-
-Comando para rodar a cron
-```sh
-php artisan schedule:run
+yarn dev
 ```
 
 Acesse o projeto
-[http://localhost:8955](http://localhost:8955)
+[http://localhost:3000](http://localhost:3000)
