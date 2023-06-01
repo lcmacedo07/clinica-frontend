@@ -20,8 +20,8 @@ Crie o Arquivo .env
 crie o Arquivo .env
 ```
 
-```sh
 Atualize as variáveis de ambiente do arquivo .env
+```sh
 BASE_URL = http://localhost:8955/api/v1
 ```
 
